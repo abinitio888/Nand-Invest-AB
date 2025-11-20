@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Activity, Cpu, Wifi } from 'lucide-react';
+import { Activity, Cpu, Wifi, Mail } from 'lucide-react';
 
 const App: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -210,7 +210,7 @@ const App: React.FC = () => {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-white tracking-widest font-sans">
-                NAND <span className="text-[#00E5FF]">INVEST AB</span>
+                NAND <span className="text-[#00E5FF]">INVEST</span>
               </h1>
               <div className="flex items-center gap-2 mt-1">
                 <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
@@ -221,8 +221,8 @@ const App: React.FC = () => {
         </div>
 
         {/* Stats Corner */}
-        <div className="hidden md:flex flex-col items-end gap-2">
-          <div className="flex items-center gap-4 px-4 py-2 bg-black/40 backdrop-blur-sm border border-white/5 rounded-full">
+        <div className="flex flex-col items-end gap-2">
+          <div className="hidden md:flex items-center gap-4 px-4 py-2 bg-black/40 backdrop-blur-sm border border-white/5 rounded-full">
              <div className="flex items-center gap-2">
                 <Wifi className="w-3 h-3 text-gray-400" />
                 <span className="text-xs font-mono text-gray-400">LATENCY:</span>
@@ -235,6 +235,14 @@ const App: React.FC = () => {
                 <span className="text-xs font-mono text-white">99.999%</span>
              </div>
           </div>
+          
+          <a 
+            href="mailto:cj@nands.se" 
+            className="flex items-center gap-2 px-4 py-2 bg-black/40 backdrop-blur-sm border border-white/5 rounded-full hover:border-[#00E5FF]/50 transition-colors pointer-events-auto group"
+          >
+            <Mail className="w-3 h-3 text-gray-400 group-hover:text-[#00E5FF] transition-colors" />
+            <span className="text-xs font-mono text-gray-300 group-hover:text-white transition-colors">cj@nands.se</span>
+          </a>
         </div>
       </header>
 
