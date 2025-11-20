@@ -27,7 +27,7 @@ export const Contact: React.FC = () => {
               </li>
               <li className="flex items-center gap-3 text-nand-muted">
                 <Mail size={18} className="text-nand-secondary" />
-                <a href="mailto:info@nandinvest.ab" className="hover:text-white transition-colors">info@nandinvest.ab</a>
+                <a href="mailto:cj@nands.se" className="hover:text-white transition-colors">cj@nands.se</a>
               </li>
               <li className="flex items-center gap-3 text-nand-muted">
                 <Phone size={18} className="text-nand-secondary" />
