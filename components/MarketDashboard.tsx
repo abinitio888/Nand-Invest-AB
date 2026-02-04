@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { Send, Bot, Loader2, Terminal } from 'lucide-react';
+import { Send, Bot, User, Loader2, Terminal } from 'lucide-react';
 import { getMarketAnalysis } from '../services/geminiService';
 import { ChatMessage, LoadingState, MarketDataPoint } from '../types';
 
