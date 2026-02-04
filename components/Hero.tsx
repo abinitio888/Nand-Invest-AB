@@ -57,8 +57,7 @@ export const Hero: React.FC = () => {
         </h1>
         
         <p className="text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-12 font-light">
-           <span className="text-white font-medium">AI</span> , <span className="text-white font-medium">Robotics</span>, <span className="text-white font-medium">Quantum Computing</span>.
-        </p>
+<span className="text-white font-medium">AI</span> · <span className="text-white font-medium">Robotics</span> · <span className="text-white font-medium">Quantum Computing</span>        </p>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button className="px-10 py-4 bg-white text-black font-bold rounded-full transition-all hover:bg-cyan-50 hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.1)] flex items-center gap-2">
