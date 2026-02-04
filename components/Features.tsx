@@ -1,52 +1,57 @@
 import React from 'react';
-import { Zap, Shield, BrainCircuit, BarChart3 } from 'lucide-react';
+import { Cpu, ShieldCheck, Zap, Globe } from 'lucide-react';
 
-const features = [
+const expertise = [
   {
-    icon: <BrainCircuit className="w-8 h-8 text-nand-accent" />,
-    title: 'Deep Learning Core',
-    description: 'Our algorithms do not just follow rules; they learn. Using reinforcement learning, our models adapt to shifting market regimes in real-time.'
+    icon: <Cpu className="w-6 h-6" />,
+    title: 'Neural Execution',
+    description: 'Proprietary deep learning models that optimize trade entry and exit for minimal slippage.'
   },
   {
-    icon: <Zap className="w-8 h-8 text-nand-accent" />,
-    title: 'Microsecond Latency',
-    description: 'Infrastructure co-located with major exchanges ensures execution speeds that capture opportunities before the market reacts.'
+    icon: <ShieldCheck className="w-6 h-6" />,
+    title: 'Risk Parity',
+    description: 'Dynamic volatility weighting that preserves capital during extreme market shifts.'
   },
   {
-    icon: <Shield className="w-8 h-8 text-nand-accent" />,
-    title: 'Dynamic Risk Management',
-    description: 'AI-driven volatility forecasting adjusts position sizing instantly, protecting capital during black swan events.'
+    icon: <Zap className="w-6 h-6" />,
+    title: 'HFT Infrastructure',
+    description: 'Co-located hardware stacks in major financial hubs providing millisecond advantages.'
   },
   {
-    icon: <BarChart3 className="w-8 h-8 text-nand-accent" />,
-    title: 'Alternative Data',
-    description: 'We ingest unstructured data—from satellite imagery to sentiment analysis—to find alpha where others see noise.'
+    icon: <Globe className="w-6 h-6" />,
+    title: 'Global Arbitrage',
+    description: 'Scanning 40+ liquid markets simultaneously for cross-asset price inefficiencies.'
   }
 ];
 
 export const Features: React.FC = () => {
   return (
-    <section id="methodology" className="py-24 bg-nand-dark relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">The Nand Advantage</h2>
-          <p className="text-nand-muted max-w-2xl mx-auto">
-            We bridge the gap between theoretical mathematics and practical market application.
-          </p>
+    <section id="methodology" className="py-32">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">Expertise at the edge of math and code.</h2>
+            <p className="text-xl text-slate-500 dark:text-slate-400 leading-relaxed">
+              We operate at the intersection of quantitative analysis and software engineering, delivering superior risk-adjusted returns.
+            </p>
+          </div>
+          <div className="text-blue-500 font-bold flex items-center gap-2 cursor-pointer hover:underline">
+            View full documentation <Zap size={16} />
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-slate-200 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 overflow-hidden rounded-3xl">
+          {expertise.map((item, index) => (
             <div 
               key={index}
-              className="p-6 bg-nand-card rounded-xl border border-white/5 hover:border-nand-accent/50 hover:-translate-y-2 transition-all duration-300 group"
+              className="bg-white dark:bg-slate-950 p-10 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors group"
             >
-              <div className="mb-4 p-3 bg-white/5 rounded-lg inline-block group-hover:bg-nand-accent/10 transition-colors">
-                {feature.icon}
+              <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white mb-8 group-hover:scale-110 transition-transform">
+                {item.icon}
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-              <p className="text-nand-muted text-sm leading-relaxed">
-                {feature.description}
+              <h3 className="text-xl font-bold mb-4">{item.title}</h3>
+              <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
+                {item.description}
               </p>
             </div>
           ))}

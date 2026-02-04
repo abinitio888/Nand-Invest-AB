@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Cpu, Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  isDarkMode: boolean;
+  toggleTheme: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Methodology', href: '#methodology' },
-    { name: 'Platform', href: '#platform' },
-    { name: 'Live Analysis', href: '#analysis' },
+    { name: 'Strategy', href: '#methodology' },
+    { name: 'Live Data', href: '#analysis' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -24,43 +28,58 @@ export const Navbar: React.FC = () => {
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled || isMobileMenuOpen
-          ? 'bg-nand-dark/90 backdrop-blur-md border-b border-white/5'
-          : 'bg-transparent'
+          ? 'py-4 bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg border-b border-slate-200 dark:border-slate-800'
+          : 'py-6 bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo(0,0)}>
-            <Cpu className="h-8 w-8 text-nand-accent" />
-            <span className="text-white font-bold text-xl tracking-wider">
-              NAND <span className="text-nand-secondary">INVEST</span>
-            </span>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between">
+          {/* Brand */}
+          <div 
+            className="text-2xl font-black tracking-tighter cursor-pointer flex items-center gap-2 group"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <span className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-2 py-0.5 rounded">N</span>
+            <span className="group-hover:tracking-[0.1em] transition-all duration-300">ANDS</span>
           </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center space-x-10">
+            <div className="flex space-x-8">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-gray-300 hover:text-nand-accent transition-colors px-3 py-2 rounded-md text-sm font-medium uppercase tracking-wide"
+                  className="text-sm font-medium hover:text-blue-500 transition-colors"
                 >
                   {link.name}
                 </a>
               ))}
-              <button className="bg-nand-secondary hover:bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-[0_0_15px_rgba(41,121,255,0.3)]">
-                Client Login
-              </button>
             </div>
+            
+            <div className="h-6 w-px bg-slate-200 dark:bg-slate-800" />
+
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              aria-label="Toggle Theme"
+            >
+              {isDarkMode ? <Sun size={20} className="text-yellow-400" /> : <Moon size={20} className="text-slate-600" />}
+            </button>
+            
+            <button className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-2 rounded-full text-sm font-bold hover:scale-105 transition-transform">
+              Portal
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* Mobile Actions */}
+          <div className="md:hidden flex items-center gap-4">
+            <button onClick={toggleTheme} className="p-2">
+              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-300 hover:text-white p-2"
+              className="p-2"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -70,18 +89,21 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-nand-dark border-b border-white/10">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="md:hidden bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 animate-in slide-in-from-top duration-300">
+          <div className="px-6 py-8 space-y-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-gray-300 hover:text-nand-accent block px-3 py-2 rounded-md text-base font-medium"
+                className="block text-2xl font-bold hover:text-blue-500"
               >
                 {link.name}
               </a>
             ))}
+            <button className="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 py-4 rounded-xl font-bold">
+              Client Portal
+            </button>
           </div>
         </div>
       )}
